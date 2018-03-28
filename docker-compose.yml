@@ -1,0 +1,39 @@
+version: '2'
+services:
+  app:
+    container_name: koel
+    build: ./img
+    restart: always
+    ports:
+    - "10022:8000"
+    volumes:
+    - /media/music:/music
+    environment:
+      ADMIN_EMAIL: mickael@kerjean.me
+      ADMIN_PASSWORD: test
+      ADMIN_NAME: Mickael
+      MEDIA_PATH: /media/music
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_USERNAME: koel
+      DB_PASSWORD: koel
+      DB_DATABASE: koel
+      MEMORY_LIMIT: 2048
+      APP_MAX_SCAN_TIME: 3600
+      FFMPEG_PATH: /usr/bin/ffmpeg
+    depends_on:
+    - db
+
+  db:
+    container_name: koel_db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: koel
+      MYSQL_PASSWORD: koel
+      MYSQL_ROOT_PASSWORD: koel
+      MYSQL_USER: koel
+    volumes:
+    - ./data/db:/var/lib/mysql
+
+    

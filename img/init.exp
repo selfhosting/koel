@@ -1,0 +1,20 @@
+#!/usr/bin/expect
+# credit to: https://github.com/binhex/arch-koel/blob/30a6103e86e8b737c374b876e1ea478b4f3143db/config/nobody/koel/init.exp
+
+spawn /usr/bin/php artisan koel:init
+
+expect "Your name*"
+send "$env(ADMIN_NAME)\r"
+
+expect "Your email address*"
+send "$env(ADMIN_EMAIL)\r"
+
+expect "Your desired password*"
+send "$env(ADMIN_PASSWORD)\r"
+
+expect "Again, just to make sure*"
+send "$env(ADMIN_PASSWORD)\r"
+
+expect "Media path*"
+send "$env(MEDIA_PATH)\r"
+expect
