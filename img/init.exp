@@ -1,5 +1,6 @@
 #!/usr/bin/expect
-# credit to: https://github.com/binhex/arch-koel/blob/30a6103e86e8b737c374b876e1ea478b4f3143db/config/nobody/koel/init.exp
+
+set timeout 600
 
 spawn /usr/bin/php artisan koel:init
 
@@ -17,4 +18,6 @@ send "$env(ADMIN_PASSWORD)\r"
 
 expect "Media path*"
 send "$env(MEDIA_PATH)\r"
-expect
+
+expect "Thanks for using Koel. You rock!"
+sleep 1
