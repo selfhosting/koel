@@ -20,6 +20,7 @@ if [ -f "/app/init.exp" ]; then
     rm /app/init.exp
 fi
 chown -R www-data:www-data /app/music/
+chown -R www-data:www-data /app/code/
 
 echo "Everything's ready, starting the server"
 apachectl -DFOREGROUND
